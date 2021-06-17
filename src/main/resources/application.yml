@@ -1,3 +1,6 @@
 spring:
   jpa:
     database: POSTGRESQL
+
+server:
+  port: ${PORT:8080}
