@@ -29,8 +29,9 @@ class ItemResource {
     }
 
     @PutMapping("/{id}")
-    fun updateStorageItem(@PathVariable("id") id : String, @RequestBody itemRequest: ItemRequest) {
+    fun updateStorageItem(@PathVariable("id") id : String, @RequestBody itemRequest: ItemRequest) : ResponseEntity<ItemResponse> {
         val updatedItem = repository.findById(id)
+        var idItemUpdated : String = ""
         updatedItem.map {
             val item : ItemsEntity = it.copy(
                 name = it.name,
@@ -39,7 +40,8 @@ class ItemResource {
                 brandId = it.brandId,
                 minimum = it.minimum
             )
-            repository.save(item)
+            idItemUpdated = repository.save(item).id
         }
+        return ResponseEntity.status(HttpStatus.OK).body(ItemResponse(idItemUpdated))
     }
 }
