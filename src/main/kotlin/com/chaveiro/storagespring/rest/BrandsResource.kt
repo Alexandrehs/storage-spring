@@ -3,6 +3,7 @@ package com.chaveiro.storagespring.rest
 import com.chaveiro.storagespring.entities.BrandsEntity
 import com.chaveiro.storagespring.repository.BrandsRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Sort
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -22,7 +23,7 @@ class BrandsResource {
 
     @GetMapping
     fun getBrands() : ResponseEntity<List<BrandsEntity>> {
-        val brands = repository.findAll()
+        val brands = repository.findAll(Sort.by("name").ascending())
         return ResponseEntity.status(HttpStatus.OK).body(brands)
     }
 }

@@ -4,6 +4,7 @@ import com.chaveiro.storagespring.entities.ItemsEntity
 import com.chaveiro.storagespring.repository.ItemRepository
 import com.chaveiro.storagespring.services.ItemsServices
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Sort
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -26,7 +27,7 @@ class ItemResource {
 
     @GetMapping
     fun getItems() : ResponseEntity<List<ItemsEntity>> {
-        val items = repository.findAll()
+        val items = repository.findAll(Sort.by("name").ascending())
         return ResponseEntity.status(HttpStatus.OK).body(items)
     }
 
