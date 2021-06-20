@@ -24,7 +24,7 @@ data class ItemsEntity (
     val minimum: String,
 
     @Column(name = "brandid")
-    val brandId : String
+    val brandid : String,
 ) {
     constructor(itemRequest: ItemRequest) : this(
         id = UUID.randomUUID().toString(),
@@ -32,6 +32,6 @@ data class ItemsEntity (
         price = itemRequest.price!!,
         storage = itemRequest.storage!!,
         minimum = itemRequest.minimum!!,
-        brandId = itemRequest.brandId!!
+        brandid = itemRequest.brandId!!,
     )
 }

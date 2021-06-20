@@ -22,13 +22,15 @@ data class ItemRequest(
     val brandId: String?
 )
 
-data class ItemResponse(
-    val id: String?
-) {
-    constructor(item: ItemsEntity) : this (
-        id = item.id
-    )
-}
+data class ItemsResponse(
+    val id: String?,
+    val name: String?,
+    val price: String?,
+    val storage: String?,
+    val minimum: String?,
+    val brandid: String?,
+    val brand: String?
+)
 
 data class BrandsRequest (
 
