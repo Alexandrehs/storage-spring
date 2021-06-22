@@ -1,7 +1,6 @@
 package com.chaveiro.storagespring.repository
 
 import com.chaveiro.storagespring.entities.ItemsEntity
-import com.chaveiro.storagespring.rest.ItemsResponse
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param

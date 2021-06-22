@@ -1,7 +1,6 @@
 package com.chaveiro.storagespring.rest
 
 import com.chaveiro.storagespring.entities.BrandsEntity
-import com.chaveiro.storagespring.entities.ItemsEntity
 import com.sun.istack.NotNull
 
 data class ItemRequest(
