@@ -22,6 +22,7 @@ interface YalesRepository : JpaRepository<YalesEntity, String> {
             "   inner join brands b" +
             "   on y.brandid = b.id" +
             "   where b.id = :id"+
+            "   and b.type = '2'" +
             "   order by y.name;", nativeQuery = true)
     public fun getYaleByBrand(@Param("id") id: String?): List<YalesEntity>
 }

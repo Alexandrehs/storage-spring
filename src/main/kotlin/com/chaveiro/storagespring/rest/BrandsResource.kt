@@ -21,9 +21,9 @@ class BrandsResource {
         return ResponseEntity.status(HttpStatus.CREATED).body(brand.id)
     }
 
-    @GetMapping
-    fun getBrands() : ResponseEntity<List<BrandsEntity>> {
-        val brands = repository.findAll(Sort.by("name").ascending())
+    @GetMapping("/{type}")
+    fun getBrandsByTypes(@PathVariable("type") type: String) : ResponseEntity<List<BrandsEntity>> {
+        val brands = repository.findAllByType(type)
         return ResponseEntity.status(HttpStatus.OK).body(brands)
     }
 }

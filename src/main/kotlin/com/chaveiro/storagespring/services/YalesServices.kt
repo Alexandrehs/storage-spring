@@ -7,6 +7,7 @@ import com.chaveiro.storagespring.repository.YalesRepository
 import com.chaveiro.storagespring.rest.YalesRequest
 import com.chaveiro.storagespring.rest.YalesResponse
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.util.*
@@ -26,7 +27,7 @@ class YalesServices {
     }
 
     public fun getAllYale(): List<YalesResponse> {
-        val yales = repository.findAll()
+        val yales = repository.findAll(Sort.by("name").ascending())
         return yales.map {
             YalesResponse(it)
         }
