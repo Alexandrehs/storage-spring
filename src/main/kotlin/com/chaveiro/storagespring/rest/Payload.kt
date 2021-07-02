@@ -1,6 +1,7 @@
 package com.chaveiro.storagespring.rest
 
 import com.chaveiro.storagespring.entities.BrandsEntity
+import com.chaveiro.storagespring.entities.YalesEntity
 import com.sun.istack.NotNull
 
 data class ItemRequest(
@@ -37,7 +38,10 @@ data class BrandsRequest (
     val id: String?,
 
     @field:NotNull
-    val name: String?
+    val name: String?,
+
+    @field:NotNull
+    val type: String?
 )
 
 data class BrandsResponse (
@@ -45,5 +49,43 @@ data class BrandsResponse (
 ){
     constructor(brand: BrandsEntity) : this (
         id = brand.id
+    )
+}
+
+data class YalesRequest (
+    @field:NotNull
+    val id: String?,
+
+    @field:NotNull
+    val name: String?,
+
+    @field:NotNull
+    val brandid: String?,
+
+    @field:NotNull
+    val storage: String?,
+
+    @field:NotNull
+    val price: String?,
+
+    @field:NotNull
+    val minimum: String?
+)
+
+data class YalesResponse (
+    val id: String?,
+    val name: String?,
+    val brandid: String?,
+    val storage: String?,
+    val price: String?,
+    val minimum: String?
+) {
+    constructor(yales: YalesEntity) : this (
+        id = yales.id,
+        name = yales.name,
+        brandid = yales.brandid,
+        price = yales.price,
+        storage = yales.storage,
+        minimum = yales.minimum
     )
 }
