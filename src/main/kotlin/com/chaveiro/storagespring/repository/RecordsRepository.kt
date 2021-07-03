@@ -55,15 +55,18 @@ interface RecordsRepository : JpaRepository<RecordsEntity, String> {
 
     @Query("select " +
             "   sum(cast(total as integer)) as total, " +
-            "   sum(cast(theamount as integer)) as entrada, " +
-            "   name from records " +
+            "   sum(cast(theamount as integer)) as quantidade, " +
+            "   name," +
+            "   case when type = '1' then 'entrada' when type = '2' then 'saida' end" +
+            "   from records " +
             "   where type = :type " +
-            "   group by name;", nativeQuery = true)
+            "   group by name, type;", nativeQuery = true)
     public fun getRecordsGroupBytype(@Param("type") type: String) : List<IRecordsOrderByType>
 }
 
 public interface IRecordsOrderByType {
     val total: String
-    val entrada: String
+    val quantidade: String
     val name: String
+    val case: String
 }
