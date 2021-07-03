@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 @Table(name = "records")
 data class RecordsEntity (
     @Id
-    val id: String,
+    val id: String?,
 
     @Column(name = "name")
     val name: String,

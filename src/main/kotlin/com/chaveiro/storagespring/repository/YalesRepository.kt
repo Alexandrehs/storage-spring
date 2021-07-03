@@ -14,10 +14,9 @@ interface YalesRepository : JpaRepository<YalesEntity, String> {
             "   y.id," +
             "   y.name," +
             "   y.storage," +
-            "   y.brandid," +
             "   y.price," +
             "   y.minimum," +
-            "   b.name as brand" +
+            "   y.brandid" +
             "   from yales y" +
             "   inner join brands b" +
             "   on y.brandid = b.id" +
