@@ -55,18 +55,39 @@ interface RecordsRepository : JpaRepository<RecordsEntity, String> {
 
     @Query("select " +
             "   sum(cast(total as integer)) as total, " +
-            "   sum(cast(theamount as integer)) as quantidade, " +
+            "   sum(cast(theamount as integer)) as the_amount, " +
             "   name," +
-            "   case when type = '1' then 'entrada' when type = '2' then 'saida' end" +
+            "   case when type = '1' then 'entrada' when type = '2' then 'saida' end type_action" +
             "   from records " +
             "   where type = :type " +
             "   group by name, type;", nativeQuery = true)
     public fun getRecordsGroupBytype(@Param("type") type: String) : List<IRecordsOrderByType>
+
+    @Query("select" +
+            "   sum(cast(total as integer)) as total," +
+            "   sum(cast(theamount as integer)) as the_amount," +
+            "   case when type = '1' then 'entrada' when type = '2' then 'saida' end  type_action" +
+            "   from records" +
+            "   where type = :type" +
+            "   and registeredin between cast(:date_init as date) and cast(:date_final as date)" +
+            "   group by type;", nativeQuery = true)
+    public fun getRecordsTotalByBetweenDate(
+        @Param("date_init")date_init: String,
+        @Param("date_final")date_final: String,
+        @Param("type")type: String
+    ) : List<IRecordsTotalBetweenDate>
+
 }
 
 public interface IRecordsOrderByType {
     val total: String
-    val quantidade: String
+    val thea_amount: String
     val name: String
-    val case: String
+    val type_action: String
+}
+
+public interface IRecordsTotalBetweenDate {
+    val total: String
+    val the_amount: String
+    val type_action: String
 }

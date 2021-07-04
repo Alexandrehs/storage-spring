@@ -2,6 +2,7 @@ package com.chaveiro.storagespring.rest
 
 import com.chaveiro.storagespring.entities.RecordsEntity
 import com.chaveiro.storagespring.repository.IRecordsOrderByType
+import com.chaveiro.storagespring.repository.IRecordsTotalBetweenDate
 import com.chaveiro.storagespring.repository.RecordsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -43,5 +44,17 @@ class RecordsResource {
     @GetMapping("/filter")
     fun getRecordsGroupByType(@PathParam("type") type: String) : ResponseEntity<List<IRecordsOrderByType>> {
         return ResponseEntity.status(HttpStatus.OK).body(recordsRepository.getRecordsGroupBytype(type))
+    }
+
+    @GetMapping("/filter/date")
+    fun getRecordsTotalBetweenDate(
+        @PathParam("date_init")date_init: String,
+        @PathParam("date_final")date_final: String,
+        @PathParam("type")type: String
+    ) : ResponseEntity<List<IRecordsTotalBetweenDate>> {
+        return ResponseEntity.status(HttpStatus.OK).body(recordsRepository.getRecordsTotalByBetweenDate(
+            date_init,
+            date_final,
+            type))
     }
 }
