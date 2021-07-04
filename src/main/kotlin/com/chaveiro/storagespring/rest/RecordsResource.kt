@@ -42,8 +42,15 @@ class RecordsResource {
     }
 
     @GetMapping("/filter")
-    fun getRecordsGroupByType(@PathParam("type") type: String) : ResponseEntity<List<IRecordsOrderByType>> {
-        return ResponseEntity.status(HttpStatus.OK).body(recordsRepository.getRecordsGroupBytype(type))
+    fun getRecordsGroupByType(
+        @PathParam("date_init")date_init: String,
+        @PathParam("date_final")date_final: String,
+        @PathParam("type") type: String
+    ) : ResponseEntity<List<IRecordsOrderByType>> {
+        return ResponseEntity.status(HttpStatus.OK).body(recordsRepository.getRecordsGroupBytype(
+            date_init,
+            date_final,
+            type))
     }
 
     @GetMapping("/filter/date")
