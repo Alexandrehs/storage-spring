@@ -86,7 +86,7 @@ interface RecordsRepository : JpaRepository<RecordsEntity, String> {
 
 public interface IRecordsOrderByType {
     val total: String
-    val thea_amount: String
+    val the_amount: String
     val name: String
     val type_action: String
 }
