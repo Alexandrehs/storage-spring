@@ -21,7 +21,7 @@ data class ItemRequest(
     @field:NotNull
     val brandId: String?,
 
-    val recordTheAmound: String?
+    val recordTheAmount: String?
 )
 
 data class ItemsResponse(
