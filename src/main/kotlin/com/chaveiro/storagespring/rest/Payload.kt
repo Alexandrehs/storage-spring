@@ -19,7 +19,9 @@ data class ItemRequest(
     val minimum: String?,
 
     @field:NotNull
-    val brandId: String?
+    val brandId: String?,
+
+    val recordTheAmound: String?
 )
 
 data class ItemsResponse(

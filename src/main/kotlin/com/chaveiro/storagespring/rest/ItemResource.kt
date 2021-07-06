@@ -69,7 +69,7 @@ class ItemResource {
                 total = (itemRequest.storage!!.toInt() * it.price.toInt()).toString(),
                 price = it.price,
                 item_id = id,
-                theAmount = itemRequest.storage,
+                theAmount = itemRequest.recordTheAmound!!,
                 type = type
             )
             idItemUpdated = repository.save(item).id
