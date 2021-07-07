@@ -23,7 +23,7 @@ class BrandsResource {
 
     @GetMapping
     fun getAllBrands() : ResponseEntity<List<BrandsEntity>> {
-        return ResponseEntity.status(HttpStatus.OK).body(repository.findAll())
+        return ResponseEntity.status(HttpStatus.OK).body(repository.findAll(Sort.by("name").ascending()))
     }
 
     @GetMapping("/{type}")
