@@ -66,7 +66,7 @@ class ItemResource {
                 id = UUID.randomUUID().toString(),
                 name = it.name,
                 registeredIn = LocalDate.now(),
-                total = (itemRequest.storage!!.toInt() * it.price.toInt()).toString(),
+                total = (itemRequest.recordTheAmount!!.toInt() * it.price.toInt()).toString(),
                 price = it.price,
                 item_id = id,
                 theAmount = itemRequest.recordTheAmount!!,
