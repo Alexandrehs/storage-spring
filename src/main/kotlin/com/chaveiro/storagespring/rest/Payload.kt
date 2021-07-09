@@ -71,7 +71,9 @@ data class YalesRequest (
     val price: String?,
 
     @field:NotNull
-    val minimum: String?
+    val minimum: String?,
+
+    val recordTheAmount: String?
 )
 
 data class YalesResponse (

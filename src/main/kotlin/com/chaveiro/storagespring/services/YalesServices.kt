@@ -55,10 +55,10 @@ class YalesServices {
                     id = UUID.randomUUID().toString(),
                     name = it.name,
                     registeredIn = LocalDate.now(),
-                    total = (yalesRequest.storage!!.toInt() * it.price.toInt()).toString(),
+                    total = (yalesRequest.recordTheAmount!!.toInt() * it.price.toInt()).toString(),
                     price = it.price,
                     item_id = id,
-                    theAmount = yalesRequest.storage,
+                    theAmount = yalesRequest.recordTheAmount,
                     type = type
                 )
 
