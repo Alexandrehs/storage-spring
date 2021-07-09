@@ -64,7 +64,7 @@ class ItemResource {
                 name = it.name,
                 price = it.price,
                 storage = itemRequest.storage!!,
-                brandid = it.brandid,
+                brand_id = it.brand_id,
                 minimum = it.minimum
             )
             val record = RecordsEntity(

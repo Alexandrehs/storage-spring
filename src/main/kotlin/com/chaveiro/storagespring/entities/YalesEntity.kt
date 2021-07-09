@@ -17,7 +17,7 @@ data class YalesEntity (
     val name: String,
 
     @Column(name = "brandid")
-    val brandid: String,
+    val brand_id: String,
 
     @Column(name = "storage")
     val storage: String,
@@ -31,7 +31,7 @@ data class YalesEntity (
     constructor(yalesRequest: YalesRequest) : this (
         id = UUID.randomUUID().toString(),
         name = yalesRequest.name!!,
-        brandid = yalesRequest.brandid!!,
+        brand_id = yalesRequest.brand_id!!,
         storage = yalesRequest.storage!!,
         price = yalesRequest.price!!,
         minimum= yalesRequest.minimum!!

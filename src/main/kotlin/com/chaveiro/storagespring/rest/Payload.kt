@@ -19,7 +19,7 @@ data class ItemRequest(
     val minimum: String?,
 
     @field:NotNull(message = "Escolha uma marca!")
-    val brandId: String?,
+    val brand_id: String?,
 
     val recordTheAmount: String?
 )
@@ -30,7 +30,7 @@ data class ItemsResponse(
     val price: String?,
     val storage: String?,
     val minimum: String?,
-    val brandid: String?,
+    val brand_id: String?,
     val brand: String?
 )
 
@@ -62,7 +62,7 @@ data class YalesRequest (
     val name: String?,
 
     @field:NotNull
-    val brandid: String?,
+    val brand_id: String?,
 
     @field:NotNull
     val storage: String?,
@@ -79,7 +79,7 @@ data class YalesRequest (
 data class YalesResponse (
     val id: String?,
     val name: String?,
-    val brandid: String?,
+    val brand_id: String?,
     val storage: String?,
     val price: String?,
     val minimum: String?
@@ -87,7 +87,7 @@ data class YalesResponse (
     constructor(yales: YalesEntity) : this (
         id = yales.id,
         name = yales.name,
-        brandid = yales.brandid,
+        brand_id = yales.brand_id,
         price = yales.price,
         storage = yales.storage,
         minimum = yales.minimum
