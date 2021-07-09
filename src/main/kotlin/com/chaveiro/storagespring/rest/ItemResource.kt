@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 import java.util.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/items")
@@ -27,9 +28,13 @@ class ItemResource {
     lateinit var recordsRepository: RecordsRepository
 
     @PostMapping
-    fun createItem(@RequestBody itemRequest: ItemRequest) : ResponseEntity<String> {
-        val item = repository.save(ItemsEntity(itemRequest))
-        return ResponseEntity.status(HttpStatus.CREATED).body(item.id)
+    fun createItem(@RequestBody @Valid itemRequest: ItemRequest) : ResponseEntity<String> {
+        return try {
+            val item = repository.save(ItemsEntity(itemRequest))
+            ResponseEntity.status(HttpStatus.CREATED).body(item.id)
+        } catch (error: Exception) {
+            throw error
+        }
     }
 
     @GetMapping

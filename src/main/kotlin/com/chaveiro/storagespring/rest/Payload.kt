@@ -2,23 +2,23 @@ package com.chaveiro.storagespring.rest
 
 import com.chaveiro.storagespring.entities.BrandsEntity
 import com.chaveiro.storagespring.entities.YalesEntity
-import com.sun.istack.NotNull
+import javax.validation.constraints.NotNull
 
 data class ItemRequest(
 
-    @field:NotNull
+    @field:NotNull(message = "Insira um nome!")
     val name: String?,
 
-    @field:NotNull
+    @field:NotNull(message = "Insira um preço!")
     val price: String?,
 
-    @field:NotNull
+    @field:NotNull(message = "Insira um estoque!")
     val storage: String?,
 
-    @field:NotNull
+    @field:NotNull(message = "Insira o minimo!")
     val minimum: String?,
 
-    @field:NotNull
+    @field:NotNull(message = "Escolha uma marca!")
     val brandId: String?,
 
     val recordTheAmount: String?
@@ -39,7 +39,7 @@ data class BrandsRequest (
     @field:NotNull
     val id: String?,
 
-    @field:NotNull
+    @field:NotNull(message = "")
     val name: String?,
 
     @field:NotNull
