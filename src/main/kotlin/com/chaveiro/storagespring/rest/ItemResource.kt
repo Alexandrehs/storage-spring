@@ -59,10 +59,22 @@ class ItemResource {
     : ResponseEntity<String> {
         val updatedItem = repository.findById(id)
         var idItemUpdated: String = ""
+        var priceEdited: String = "0"
+
         updatedItem.map {
+            priceEdited = it.price
+
+            if(!itemRequest.price.isNullOrEmpty()) {
+                priceEdited = if(itemRequest.price !== it.price) {
+                    itemRequest.price
+                } else {
+                    it.price
+                }
+            }
+
             val item = it.copy(
                 name = it.name,
-                price = it.price,
+                price = priceEdited,
                 storage = itemRequest.storage!!,
                 brand_id = it.brand_id,
                 minimum = it.minimum
@@ -71,8 +83,8 @@ class ItemResource {
                 id = UUID.randomUUID().toString(),
                 name = it.name,
                 registeredIn = LocalDate.now(),
-                total = (itemRequest.recordTheAmount!!.toInt() * it.price.toInt()).toString(),
-                price = it.price,
+                total = (itemRequest.recordTheAmount!!.toInt() * priceEdited.toInt()).toString(),
+                price = priceEdited,
                 item_id = id,
                 theAmount = itemRequest.recordTheAmount!!,
                 type = type
