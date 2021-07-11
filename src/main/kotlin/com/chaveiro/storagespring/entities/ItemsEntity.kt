@@ -28,7 +28,7 @@ data class ItemsEntity (
 ) {
     constructor(itemRequest: ItemRequest) : this(
         id = UUID.randomUUID().toString(),
-        name = itemRequest.name!!,
+        name = itemRequest.name!!.uppercase(),
         price = itemRequest.price!!,
         storage = itemRequest.storage!!,
         minimum = itemRequest.minimum!!,
