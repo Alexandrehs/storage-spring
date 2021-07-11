@@ -60,37 +60,46 @@ class ItemResource {
         val updatedItem = repository.findById(id)
         var idItemUpdated: String = ""
         var priceEdited: String = "0"
+        var nameEdited: String = ""
 
         updatedItem.map {
             priceEdited = it.price
+            nameEdited = it.name
 
             if(!itemRequest.price.isNullOrEmpty()) {
-                priceEdited = if(itemRequest.price !== it.price) {
-                    itemRequest.price
-                } else {
-                    it.price
+                if(itemRequest.price !== it.price) {
+                    priceEdited = itemRequest.price
+                }
+            }
+
+            if(!itemRequest.name.isNullOrEmpty()) {
+                if(itemRequest.name !== it.name) {
+                    nameEdited = itemRequest.name
                 }
             }
 
             val item = it.copy(
-                name = it.name,
+                name = nameEdited.uppercase(),
                 price = priceEdited,
                 storage = itemRequest.storage!!,
                 brand_id = it.brand_id,
                 minimum = it.minimum
             )
-            val record = RecordsEntity(
-                id = UUID.randomUUID().toString(),
-                name = it.name,
-                registeredIn = LocalDate.now(),
-                total = (itemRequest.recordTheAmount!!.toInt() * priceEdited.toInt()).toString(),
-                price = priceEdited,
-                item_id = id,
-                theAmount = itemRequest.recordTheAmount!!,
-                type = type
-            )
+
+            if(!itemRequest.recordTheAmount.isNullOrEmpty()) {
+                val record = RecordsEntity(
+                    id = UUID.randomUUID().toString(),
+                    name = nameEdited.uppercase(),
+                    registeredIn = LocalDate.now(),
+                    total = (itemRequest.recordTheAmount!!.toInt() * priceEdited.toInt()).toString(),
+                    price = priceEdited,
+                    item_id = id,
+                    theAmount = itemRequest.recordTheAmount!!,
+                    type = type
+                )
+                recordsRepository.save(record)
+            }
             idItemUpdated = repository.save(item).id
-            recordsRepository.save(record)
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(idItemUpdated)
