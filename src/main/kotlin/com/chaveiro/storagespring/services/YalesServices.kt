@@ -43,27 +43,49 @@ class YalesServices {
     public fun updateYale(id: String, yalesRequest: YalesRequest, type: String) {
         try {
             val yaleUpdate = repository.findById(id)
+            var nameEdited = ""
+            var priceEdited = "0"
+
             yaleUpdate.map {
+                nameEdited = it.name
+                priceEdited = it.price
+
+                if(!yalesRequest.name.isNullOrEmpty()) {
+                    if(yalesRequest.name !== it.name) {
+                        nameEdited = yalesRequest.name
+                    }
+                }
+
+                if(!yalesRequest.price.isNullOrEmpty()) {
+                    if(yalesRequest.price !== it.price) {
+                        priceEdited = yalesRequest.price
+                    }
+                }
+
                 val yale = it.copy(
-                    name = it.name,
-                    price = it.price,
+                    name = nameEdited,
+                    price = priceEdited,
                     storage = yalesRequest.storage!!,
                     brand_id = it.brand_id,
                     minimum = it.minimum
                 )
-                val record = RecordsEntity(
-                    id = UUID.randomUUID().toString(),
-                    name = it.name,
-                    registeredIn = LocalDate.now(),
-                    total = (yalesRequest.recordTheAmount!!.toInt() * it.price.toInt()).toString(),
-                    price = it.price,
-                    item_id = id,
-                    theAmount = yalesRequest.recordTheAmount,
-                    type = type
-                )
+
+                if(yalesRequest.recordTheAmount.isNullOrEmpty()) {
+                    val record = RecordsEntity(
+                        id = UUID.randomUUID().toString(),
+                        name = it.name,
+                        registeredIn = LocalDate.now(),
+                        total = (yalesRequest.recordTheAmount!!.toInt() * it.price.toInt()).toString(),
+                        price = it.price,
+                        item_id = id,
+                        theAmount = yalesRequest.recordTheAmount,
+                        type = type
+                    )
+
+                    recordsRepository.save(record)
+                }
 
                 repository.save(yale)
-                recordsRepository.save(record)
             }
         } catch (error : Exception) {
             throw error
