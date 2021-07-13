@@ -70,7 +70,7 @@ class YalesServices {
                     minimum = it.minimum
                 )
 
-                if(yalesRequest.recordTheAmount.isNullOrEmpty()) {
+                if(!yalesRequest.recordTheAmount.isNullOrEmpty()) {
                     val record = RecordsEntity(
                         id = UUID.randomUUID().toString(),
                         name = it.name,
