@@ -1,5 +1,5 @@
 <h1 align="center">
-  Api Controle de Estoque 
+  Api Storage Spring 
   <img src="https://img.shields.io/static/v1?label=language&message=kotlin&color=orange" />
   <img src="https://img.shields.io/static/v1?label=framework&message=springboot&color=success" />
   <img src="https://img.shields.io/static/v1?label=deploy&message=heroku&color=blueviolet" />
