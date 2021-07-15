@@ -20,9 +20,9 @@
 
 # Tecnologias
 <p>
-  Foi utilizado <b><i><s>Spring Boot</s></i></b> para acelerar e simplificar a implementação da API. A linguagem utilizada é Kotlin com o gerenciador de dependência Gradle, 
-  a persistência de dados é feita em PostgreSQL.
-  O deploy da Api foi feita na Heroku.
+  Foi utilizado <b><i>Spring Boot</i></b> para acelerar e simplificar a implementação da API. A linguagem utilizada é <b><i>Kotlin</i></b> com o gerenciador de dependência <b><i>Gradle</i></b>, 
+  a persistência de dados é feita em <b><i>PostgreSQL</i></b>.
+  O deploy da Api foi feita na <b><i>Heroku</i></b>.
 </p>
 
 # Autor
