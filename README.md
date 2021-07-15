@@ -12,7 +12,20 @@
 </p>
 
 # Objetivo
+<p>
+  Fazer um controle de mercadorias que são comercializadas em um chaveiro, tendo como objetivo ajuda o administrador conseguir
+  gerir as saídas e entradas de produtos, assim sabendo a necessidade de fazer compras ou traças estratégias para venda de algum
+  produto.
+</p>
 
 # Tecnologias
+<p>
+  Foi utilizado Spring Boot para acelerar e simplificar a implementação da API. A linguagem utilizada é Kotlin com o gerenciador de dependência Gradle, 
+  a persistência de dados é feita em PostgreSQL.
+  O deploy da Api foi feita na Heroku.
+</p>
 
 # Autor
+<p>
+  Apaixonado por desenvolvimento de aplicações tecnologicas para melhorar a performasse e o crescimento de negócios.
+</p>
